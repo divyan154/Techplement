@@ -79,7 +79,7 @@ export default function AllQuotesPage() {
               transition={{ delay: index * 0.05 }}
               className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition"
             >
-              <p className="text-lg italic text-indigo-700">"{quote.text}"</p>
+              <p className="text-lg italic text-indigo-700">`{quote.text}`</p>
               <p className="mt-2 text-sm text-gray-600">
                 — {quote.author || "Unknown"}
               </p>

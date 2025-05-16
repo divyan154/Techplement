@@ -66,8 +66,9 @@ export default function HeroSection() {
             className="mt-6 bg-white text-indigo-800 rounded-lg p-4 shadow-md"
           >
             <p className="italic">
-              "{quote}" Written By: <b>{author}</b>
-            </p>
+  {`"${quote}" Written By: `}<b>{author}</b>
+</p>
+
           </motion.div>
         )}
         <Link href="/quotes">
