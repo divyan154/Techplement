@@ -9,12 +9,15 @@ export default function HeroSection() {
   const [quote, setQuote] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [author, setAuthor] = useState<string>("");
+
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
   const fetchQuote = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://127.0.0.1:8000/quotes/random"); // <-- Change this to your backend URL
+      const res = await axios.get(`${backendUrl}/quotes/random`);
 
-      setQuote(res.data.quote.text); // assuming the backend returns { quote: "..." }
+      setQuote(res.data.quote.text);
       setAuthor(res.data.quote.author);
     } catch {
       setQuote("Failed to load quote. Try again.");
