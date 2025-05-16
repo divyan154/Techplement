@@ -8,7 +8,7 @@ interface Quote {
   text: string;
   author: string;
 }
-
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 export default function AllQuotesPage() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -20,7 +20,7 @@ export default function AllQuotesPage() {
     const fetchQuotes = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://127.0.0.1:8000/quotes/all");
+        const res = await axios.get(`${backendUrl}/quotes/all`);
         setQuotes(res.data);
         setFilteredQuotes(res.data); // Initially show all quotes
       } catch {
