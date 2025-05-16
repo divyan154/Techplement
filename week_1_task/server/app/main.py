@@ -1,18 +1,16 @@
 from fastapi import FastAPI, Depends
 import httpx
-import os  #  Required for reading environment variables
+
 from fastapi.middleware.cors import CORSMiddleware  
-from dotenv import load_dotenv
+
 
 from sqlalchemy.orm import Session
 from . import models
 from .database import SessionLocal, engine
 
-# Load .env variables
-load_dotenv()
 
-# Read FRONTEND_URL from .env
-frontend_url = os.getenv('FRONTEND_URL')  
+
+ 
 
 # Create tables
 models.Base.metadata.create_all(bind=engine)
@@ -22,7 +20,7 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", frontend_url],  #  frontend origin from env
+    allow_origins=["http://localhost:3000", https://techplement-y3v4.vercel.app],  #  frontend origin from env
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
